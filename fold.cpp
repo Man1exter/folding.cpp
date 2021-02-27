@@ -40,6 +40,12 @@ auto fun3(Args ... args){
     return (... - args);
 }
 
+template<typename ... Args>
+auto fun4(Args ... args){
+    cout << "rozmiar: " << sizeof...(Args) << endl;
+    return(... + (args + string( " " )));
+}
+
 int main(){
     // sumowanie liczb z fun1 jako szablonu..
     cout << fun1(1,2,3,45,55,68) << endl;
@@ -55,6 +61,15 @@ int main(){
 
     cout << fun3(170,45,32) << endl;  // (170 - 45) - 32 = wynik
     cout << fun3(90,42,32) << endl;   // (90 - 42) - 32 = wynik
+
+    cout << endl;
+    cout << endl;
+
+    cout << fun4("Man1exter","love","CSGO","hekasz") << endl;
+    cout << fun4("Slonik","love","kragliczne","okragliczne") << endl;
+
+    cout << endl;
+    cout << endl;
  
     return 0;
 }
