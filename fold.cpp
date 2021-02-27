@@ -56,6 +56,11 @@ void massInsertion(C& c, Args ... args){
     (c.push_back(args), ...);
 }
 
+template<typename ... Args>
+void massCout(Args&& ... args){
+    (std::cout << ... << args) << std::endl;
+}
+
 
 int main(){
     // sumowanie liczb z fun1 jako szablonu..
@@ -92,6 +97,13 @@ int main(){
 
     massInsertion(vec,123,321,12345,54321);  // dodaje elementy do wectora z szblonem..
     printSTL(vec , " " , true);
+
+    cout << endl;
+    cout << endl;
+
+    // masowy cout wyswietlajacy to co znajduje sie wewnatrz...
+
+    massCout( " A " , 1 , ' c ' , " WELCOME " , 6.5f );
  
     return 0;
 }
