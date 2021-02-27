@@ -51,6 +51,11 @@ auto countInside(const C& c, Args ... args){
     return(std::count(begin(c), end(c), args) + ...);
 }
 
+template<typename C, typename ... Args>
+void massInsertion(C& c, Args ... args){
+    (c.push_back(args), ...);
+}
+
 
 int main(){
     // sumowanie liczb z fun1 jako szablonu..
@@ -80,7 +85,13 @@ int main(){
     // ile w zbiorze znajduje sie liczb.... (zbior,liczby) ==> po przecinki za zbiorem,liczba1,liczb2
 
     vector<int> vec{1,2,5,6,7,8,1,2,3,2,3,5,6,7,8};
-    cout << countInside(vec,1,2,3) << endl;
+    cout << "wystepuje w zbiorze ====> "<< countInside(vec,1,2,3) << " razy " << endl;
+
+    cout << endl;
+    cout << endl;
+
+    massInsertion(vec,123,321,12345,54321);  // dodaje elementy do wectora z szblonem..
+    printSTL(vec , " " , true);
  
     return 0;
 }
