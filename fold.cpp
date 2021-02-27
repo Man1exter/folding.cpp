@@ -46,6 +46,12 @@ auto fun4(Args ... args){
     return(... + (args + string( " " )));
 }
 
+template<typename C, typename ... Args>
+auto countInside(const C& c, Args ... args){
+    return(std::count(begin(c), end(c), args) + ...);
+}
+
+
 int main(){
     // sumowanie liczb z fun1 jako szablonu..
     cout << fun1(1,2,3,45,55,68) << endl;
@@ -70,6 +76,11 @@ int main(){
 
     cout << endl;
     cout << endl;
+
+    // ile w zbiorze znajduje sie liczb.... (zbior,liczby) ==> po przecinki za zbiorem,liczba1,liczb2
+
+    vector<int> vec{1,2,5,6,7,8,1,2,3,2,3,5,6,7,8};
+    cout << countInside(vec,1,2,3) << endl;
  
     return 0;
 }
